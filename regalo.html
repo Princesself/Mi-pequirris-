@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi pequirris ❤️</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #fff0f3; margin: 0; overflow: hidden; font-family: sans-serif; touch-action: manipulation; }
+        .sobre-container { position: relative; width: 280px; height: 180px; background: #f08080; cursor: pointer; z-index: 2; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .sobre-container::before { content: ""; position: absolute; border-top: 100px solid #f08080; border-left: 140px solid transparent; border-right: 140px solid transparent; top: 0; transform-origin: top; transition: 0.5s; z-index: 4; }
+        .carta { position: absolute; background: white; width: 250px; height: 150px; left: 15px; bottom: 10px; transition: 0.5s; z-index: 1; padding: 20px; box-sizing: border-box; text-align: center; border-radius: 5px; }
+        .carta p { font-size: 14px; color: #c9184a; line-height: 1.4; margin: 5px 0; }
+        .abierto .sobre-container::before { transform: rotateX(180deg); z-index: 0; }
+        .abierto .carta { transform: translateY(-130px); height: 320px; z-index: 5; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .corazon { position: absolute; color: #ff4d6d; animation: subir 3s linear infinite; pointer-events: none; }
+        @keyframes subir { from { transform: translateY(100vh); opacity: 1; } to { transform: translateY(-10vh); opacity: 0; } }
+        .aviso { position: absolute; bottom: 30px; color: #ff4d6d; font-weight: bold; }
+    </style>
+</head>
+<body onclick="abrirTodo()">
+    <audio id="musica" loop><source src="https://files.catbox.moe/kivm6o.mp3" type="audio/mpeg"></audio>
+    
+    <div id="main">
+        <div class="sobre-container"></div>
+        <div class="carta">
+            <img src="https://i.pinimg.com/originals/6c/bf/28/6cbf28264b871dac7f1eac409ea03bfd.gif" width="40">
+            <p><strong>Para: Mi pequirris ❤️</strong></p>
+            <p>Eres el mejor novio del mundo. Gracias por tu calma y por iluminar mis días.</p>
+            <p>Quiero estar contigo hoy y siempre. Me haces inmensamente feliz. 🩷💋</p>
+        </div>
+    </div>
+    <div class="aviso" id="texto-aviso">¡Toca la pantalla, mi pequirris! 👇</div>
+
+    <script>
+        function abrirTodo() {
+            document.getElementById('main').classList.add('abierto');
+            document.getElementById('musica').play();
+            document.getElementById('texto-aviso').style.display = 'none';
+            setInterval(() => {
+                const c = document.createElement('div');
+                c.className = 'corazon'; c.innerHTML = '❤️';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                document.body.appendChild(c);
+                setTimeout(() => c.remove(), 3000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
